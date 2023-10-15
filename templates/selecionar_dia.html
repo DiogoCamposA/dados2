@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Média por Hora</title>
+    <style>
+        table {
+            border-collapse: separate;
+            border-spacing: 15px; /* Ajuste o valor para a distância desejada */
+        }
+    </style>
+</head>
+<body>
+    <h1>Dados em cada hora</h1>
+    
+    <h2>Dia {{ selected_day }} do {{ selected_month }} </h2>
+    <table>
+        <tr>
+            <th>Métrica</th>
+            {% for hour, _ in medias_por_hora.items() %}
+                <th>{{ hour }}</th>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>Temperatura</td>
+            {% for _, metrics in medias_por_hora.items() %}
+                <td>{{ metrics.temp|round(1) }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>Umidade do Ar</td>
+            {% for _, metrics in medias_por_hora.items() %}
+                <td>{{ metrics.umid|round(1) }}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>Umidade do Solo</td>
+            {% for _, metrics in medias_por_hora.items() %}
+                <td>{{ metrics.solo|round(1) }}</td>
+            {% endfor %}
+        </tr>
+    </table>
+</body>
+</html>

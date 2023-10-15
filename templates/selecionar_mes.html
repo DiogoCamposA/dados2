@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Média por Dia</title>
+    <style>
+        table {
+            border-collapse: separate;
+            border-spacing: 15px; /* Aumenta a distância entre as colunas */
+        }
+    </style>
+</head>
+<body>
+    <h1>Dados em cada dia</h1>
+    
+    <h2>Mês {{ selected_month }}</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Data</th>
+                {% for day, _ in medias_por_dia.items() %}
+                    <th>{{ day }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Temperatura</td>
+                {% for _, media in medias_por_dia.items() %}
+                    <td>{{ media.temp|round(1) }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>Umidade do Ar</td>
+                {% for _, media in medias_por_dia.items() %}
+                    <td>{{ media.umid|round(1) }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>Umidade do Solo</td>
+                {% for _, media in medias_por_dia.items() %}
+                    <td>{{ media.solo|round(1) }}</td>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
